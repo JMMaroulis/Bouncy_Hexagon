@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Camera mainCamera;
 
     private Rigidbody2D rigidBody2D;
-    public Camera mainCamera;
-    private float forceMagnitude = 500f;
-    
+    private float forceMagnitude = 500f;    
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +19,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonUp(1))
+        if(Input.GetMouseButtonUp(0))
         {
             MoveOnclick();
 
         }
+
     }
 
     void MoveOnclick()
@@ -38,4 +38,6 @@ public class Player : MonoBehaviour
 
         rigidBody2D.AddForce(relativePosition.normalized * forceMagnitude);
     }
+
+
 }
