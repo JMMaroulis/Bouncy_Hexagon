@@ -43,5 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876a6a2615c9e69499d7ac2006b3657f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimePeriod: 2
-  hexagon: {fileID: 860156036190815761, guid: 3b1dfd22b8479d6419b319833241d3e9, type: 3}
+  spawnTimePeriod: 2.5
+  spawnRotationRate: 30
+  spawnShrinkRate: 0.1
+  spawnStartingScale: 8
+  hexagonPrefab: {fileID: 860156036190815761, guid: 3b1dfd22b8479d6419b319833241d3e9,
+    type: 3}

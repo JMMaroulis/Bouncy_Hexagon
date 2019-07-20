@@ -6,7 +6,12 @@ public class HexagonSpawner : MonoBehaviour
 {
 
     public float spawnTimePeriod = 2.0f;
-    public GameObject hexagon;
+    public float spawnRotationRate = 30f;
+    public float spawnShrinkRate = 0.1f;
+    public float spawnStartingScale = 8.0f;
+
+
+    public GameObject hexagonPrefab;
 
     //private Hexagon hexagon;
     private float timer;
@@ -30,6 +35,10 @@ public class HexagonSpawner : MonoBehaviour
 
     void CreateHexagon()
     {
-        Instantiate(hexagon);
+        GameObject newHexagon = Instantiate(hexagonPrefab);
+        Hexagon newHexagonScript = newHexagon.GetComponent<Hexagon>();
+        newHexagonScript.startingScale = spawnStartingScale;
+        newHexagonScript.shrinkRate = spawnShrinkRate;
+        newHexagonScript.rotationRate = spawnRotationRate;
     }
 }

@@ -7,7 +7,7 @@ public class Hexagon : MonoBehaviour
 
     public float rotationRate = 5f;
     public float shrinkRate = 0.1f;
-    public float startingScale = 3f;
+    public float startingScale = 8.0f;
     public int rotationDirection = 1;
 
     // Start is called before the first frame update

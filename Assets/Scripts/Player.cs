@@ -50,12 +50,15 @@ public class Player : MonoBehaviour
         Debug.Log(mousePosition);
         Debug.Log(playerPosition);
 
-        rigidBody2D.AddForce(relativePosition.normalized * forceMagnitude);
+        //rigidBody2D.AddForce(relativePosition.normalized * forceMagnitude);
+        rigidBody2D.velocity = (relativePosition.normalized * 5f);
     }
 
     void OnCollisionEnter2D()
     {
-        int index = Mathf.RoundToInt(Random.value * 5);
+        int index = Mathf.RoundToInt(Random.value * 4);
         audioSource.PlayOneShot(Notes[index]);
     }
+
+ 
 }
