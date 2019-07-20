@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTimePeriod: 2.5
   spawnRotationRate: 30
-  spawnShrinkRate: 0.1
+  spawnShrinkRate: 1
   spawnStartingScale: 8
   hexagonPrefab: {fileID: 860156036190815761, guid: 3b1dfd22b8479d6419b319833241d3e9,
     type: 3}
