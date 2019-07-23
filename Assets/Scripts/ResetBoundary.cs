@@ -17,8 +17,15 @@ public class ResetBoundary : MonoBehaviour
         
     }
 
-    void OnTriggerExit2D()
+    void OnTriggerExit2D(Collider2D other)
     {
-        SceneManager.LoadScene("HexagonScene");
+        if(other.tag == "Player")
+        {
+            //data transfer to next iteration
+            float spawnTimePeriod = GameObject.Find("HexagonSpawner").GetComponent<HexagonSpawner>().spawnTimePeriod;
+            SceneResetDataTransfer.HexagonSpawntimePeriod = (spawnTimePeriod -= 0.1f);
+
+            SceneManager.LoadScene("HexagonScene");
+        }
     }
 }

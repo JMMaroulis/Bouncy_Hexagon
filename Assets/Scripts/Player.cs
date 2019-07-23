@@ -50,8 +50,8 @@ public class Player : MonoBehaviour
         Debug.Log(mousePosition);
         Debug.Log(playerPosition);
 
-        //rigidBody2D.AddForce(relativePosition.normalized * forceMagnitude);
-        rigidBody2D.velocity = (relativePosition.normalized * 5f);
+        rigidBody2D.AddForce(relativePosition.normalized * forceMagnitude);
+        //rigidBody2D.velocity = (relativePosition.normalized * 5f);
     }
 
     void OnCollisionEnter2D()

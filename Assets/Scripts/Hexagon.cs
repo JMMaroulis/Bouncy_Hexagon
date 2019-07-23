@@ -15,6 +15,7 @@ public class Hexagon : MonoBehaviour
     {
         StartingRotation();
         StartingSize();
+        //GetComponent<LineRenderer>().widthMultiplier = 1f;
     }
 
     // Update is called once per frame
@@ -63,7 +64,7 @@ public class Hexagon : MonoBehaviour
 
     void KillWhenSmall()
     {
-        if (transform.localScale.x < 0 && transform.localScale.y < 0)
+        if (transform.localScale.x < 0.5 && transform.localScale.y < 0.5)
         {
             Destroy(gameObject);
         }
