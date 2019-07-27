@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 860156036190815761, guid: 3b1dfd22b8479d6419b319833241d3e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8481175677214414630, guid: 3b1dfd22b8479d6419b319833241d3e9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -275,16 +280,69 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1835335876}
-    - target: {fileID: 957552030, guid: 3191e5b40fca77140af46182b4a20d5d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 957552029, guid: 3191e5b40fca77140af46182b4a20d5d, type: 3}
-      propertyPath: m_Shadows.m_Type
+    - target: {fileID: 4585377227163884031, guid: 3191e5b40fca77140af46182b4a20d5d,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 957552028, guid: 3191e5b40fca77140af46182b4a20d5d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3191e5b40fca77140af46182b4a20d5d, type: 3}
+--- !u!1 &1240401022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1240401024}
+  - component: {fileID: 1240401026}
+  m_Layer: 0
+  m_Name: GameBoundary
+  m_TagString: GameBoundary
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1240401024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240401022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1240401026
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240401022}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -15, y: -10}
+  - {x: -15, y: 10}
+  - {x: 15, y: 10}
+  - {x: 15, y: -10}
+  - {x: -15, y: -10}
 --- !u!1 &1402122918
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +433,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 860156036190815761, guid: 3b1dfd22b8479d6419b319833241d3e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8481175677214414630, guid: 3b1dfd22b8479d6419b319833241d3e9,
         type: 3}
@@ -649,6 +712,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 860156036190815761, guid: 3b1dfd22b8479d6419b319833241d3e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8481175677214414630, guid: 3b1dfd22b8479d6419b319833241d3e9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -717,6 +785,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HexagonSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 890737026708371487, guid: 5beaced652827604da134e1f289c99be,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 890737026708371480, guid: 5beaced652827604da134e1f289c99be,
         type: 3}

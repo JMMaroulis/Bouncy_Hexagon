@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 957552030}
   - component: {fileID: 957552029}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 2752789635881160116}
   - component: {fileID: 4585377227163884031}
   - component: {fileID: 3378060962177551330}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: f1f087bb1f3fe7545a80aba79ec016fa, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &2752789635881160116
 MonoBehaviour:
@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  material: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   NoteC: {fileID: 8300000, guid: d6cd877d19bae3545aa8cf474e1730b1, type: 3}
   NoteA: {fileID: 8300000, guid: 5f85b948db0255742a45c824eef7f95d, type: 3}
   NoteG: {fileID: 8300000, guid: bef06433a31bcb04cb2919980f19f0ad, type: 3}
