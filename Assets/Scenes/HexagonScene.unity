@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: startingScale
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 229758533, guid: 3b1dfd22b8479d6419b319833241d3e9, type: 3}
+      propertyPath: rotationRate
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1dfd22b8479d6419b319833241d3e9, type: 3}
 --- !u!1001 &1178788695
@@ -508,6 +512,10 @@ PrefabInstance:
       propertyPath: startingScale
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 229758533, guid: 3b1dfd22b8479d6419b319833241d3e9, type: 3}
+      propertyPath: rotationRate
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3030221644250511001, guid: 3b1dfd22b8479d6419b319833241d3e9,
         type: 3}
       propertyPath: m_Parameters.generateLightingData
@@ -772,6 +780,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 229758533, guid: 3b1dfd22b8479d6419b319833241d3e9, type: 3}
+      propertyPath: rotationRate
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1dfd22b8479d6419b319833241d3e9, type: 3}
 --- !u!1001 &2134720725
@@ -845,6 +857,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890737026708371481, guid: 5beaced652827604da134e1f289c99be,
+        type: 3}
+      propertyPath: spawnRotationRate
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5beaced652827604da134e1f289c99be, type: 3}

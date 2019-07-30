@@ -69,17 +69,27 @@ public class Player : MonoBehaviour
         //Quaternion extraRotation = new Quaternion(0, 0, degreeRotationExtra, 0);
 
         //get all hexagon vertices
-        LineRenderer[] allHexagons = Object.FindObjectsOfType<LineRenderer>();
-        Vector3[][] allPoints = new Vector3[allHexagons.Length][];
-        
+        //LineRenderer[] allHexagons = Object.FindObjectsOfType<LineRenderer>();
+        EdgeCollider2D[] allHexagons = Object.FindObjectsOfType<EdgeCollider2D>();
+        Vector2[][] allPoints = new Vector2[allHexagons.Length][];
+
         for (int i = 0; i < allHexagons.Length; i++)
         {
-            allPoints[i] = new Vector3[6];
-            allHexagons[i].GetPositions(allPoints[i]);
+            allPoints[i] = new Vector2[6];
+            //allHexagons[i].GetPositions(allPoints[i]);
+            allPoints[i] = allHexagons[i].points;
         }
 
         //raycast to all vertices, TODO: and also +- 0.02 radians or so
         List<RaycastHit2D> hitList = new List<RaycastHit2D>();
+
+        List<Quaternion> deviations = new List<Quaternion>();
+        for (float i = -2f; i <= 2f; i+= 0.1f)
+        //for (float i = -0.0006f; i <= 0.0006f; i += 0.0006f)
+
+        {
+                deviations.Add(Quaternion.AngleAxis(i, new Vector3(0,0,1)));
+        }
 
         for (int i = 0; i < allPoints.Length; i++)
         {
@@ -89,16 +99,24 @@ public class Player : MonoBehaviour
 
             for (int j = 0; j < allPoints[i].Length; j++)
             {
-                //rotate and scale to get from point definition to world space
-                Vector3 hexPointWorld = hexRotation * allPoints[i][j];
-                hexPointWorld = new Vector3(hexPointWorld.x * hexScale.x, hexPointWorld.y * hexScale.y, hexPointWorld.z * hexScale.z);
-                
-                //relative position to player, raycast, add to results
-                Vector3 direction = hexPointWorld - transform.position;
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
-                hitList.Add(hit);
+
+                foreach (Quaternion deviation in deviations)
+                {
+                    //rotate and scale to get from point definition to world space
+                    Vector3 hexPointWorld = hexRotation * allPoints[i][j];
+                    hexPointWorld = new Vector3(hexPointWorld.x * hexScale.x, hexPointWorld.y * hexScale.y, hexPointWorld.z * hexScale.z);
+
+                    //relative position to player, raycast, add to results
+                    Vector3 direction = hexPointWorld - transform.position;
+                    direction = deviation * direction;
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
+                    hitList.Add(hit);
+                }
+
             }
         }
+
+
 
         //raycast to 4 corners (this should not be this much fucking work, it really shouldn't)
         GameObject boundingBox = GameObject.FindGameObjectWithTag("GameBoundary");
