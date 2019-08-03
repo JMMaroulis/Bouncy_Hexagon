@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private List<AudioClip> Notes = new List<AudioClip>();
 
     private AudioSource audioSource;
+    private float pointExtender = 1.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -104,7 +105,7 @@ public class Player : MonoBehaviour
                 {
                     //rotate and scale to get from point definition to world space
                     Vector3 hexPointWorld = hexRotation * allPoints[i][j];
-                    hexPointWorld = new Vector3(hexPointWorld.x * hexScale.x, hexPointWorld.y * hexScale.y, hexPointWorld.z * hexScale.z);
+                    hexPointWorld = new Vector3((hexPointWorld.x * hexScale.x), (hexPointWorld.y * hexScale.y), hexPointWorld.z * hexScale.z);
 
                     //relative position to player, raycast, add to results
                     Vector3 direction = hexPointWorld - transform.position;
@@ -115,27 +116,6 @@ public class Player : MonoBehaviour
 
             }
         }
-
-
-
-        //raycast to 4 corners (this should not be this much fucking work, it really shouldn't)
-        GameObject boundingBox = GameObject.FindGameObjectWithTag("GameBoundary");
-        EdgeCollider2D boundingBoxcollider = boundingBox.GetComponent<EdgeCollider2D>();
-        var bounds = boundingBoxcollider.bounds;
-        Vector2 centre = bounds.center;
-        float width = bounds.size.x;
-        float height = bounds.size.y;
-
-        Vector3 a = new Vector3(centre.x + (0.5f * width), centre.y + (0.5f * height), 0);
-        Vector3 b = new Vector3(centre.x - (0.5f * width), centre.y + (0.5f * height), 0);
-        Vector3 c = new Vector3(centre.x + (0.5f * width), centre.y - (0.5f * height), 0);
-        Vector3 d = new Vector3(centre.x - (0.5f * width), centre.y - (0.5f * height), 0);
-
-        hitList.Add(Physics2D.Raycast(transform.position, a - transform.position));
-        hitList.Add(Physics2D.Raycast(transform.position, b - transform.position));
-        hitList.Add(Physics2D.Raycast(transform.position, c - transform.position));
-        hitList.Add(Physics2D.Raycast(transform.position, d - transform.position));
-
 
         //sort raycast hit position by angle from Y direction,
         //then convert into vector3 array, prepend player position
@@ -153,6 +133,11 @@ public class Player : MonoBehaviour
         shadowOverlay.vertices = hitVectorsSorted;
         shadowOverlay.triangles = PolynomialTriangles(hitVectorsSorted.Length);
         Debug.Log("Got There!");
+
+        //material.SetColor("_Color", new Color(0f, 0f, 0f, 0f));
+        //material.color = new Color(0f, 0f, 0f, 1f);
+        //material.shader = shader;
+
 
         Graphics.DrawMesh(shadowOverlay, Vector3.zero, Quaternion.identity, material, 20);
         //DrawTestMesh();
