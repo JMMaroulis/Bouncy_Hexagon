@@ -23,6 +23,11 @@ public class HexagonSpawner : MonoBehaviour
         {
             spawnTimePeriod = SceneResetDataTransfer.HexagonSpawntimePeriod;
         }
+        if (SceneResetDataTransfer.HexagonShrinkRate != 0)
+        {
+            spawnShrinkRate = SceneResetDataTransfer.HexagonShrinkRate;
+        }
+        SpawnStartingHexagons();
     }
 
     // Update is called once per frame
@@ -32,17 +37,24 @@ public class HexagonSpawner : MonoBehaviour
         if( timer >= spawnTimePeriod)
         {
             timer = 0f;
-            CreateHexagon();
+            CreateHexagon(spawnStartingScale, spawnShrinkRate, spawnRotationRate);
         }
 
     }
 
-    void CreateHexagon()
+    void CreateHexagon(float scale, float shrinkRate, float rotationRate)
     {
         GameObject newHexagon = Instantiate(hexagonPrefab);
         Hexagon newHexagonScript = newHexagon.GetComponent<Hexagon>();
-        newHexagonScript.startingScale = spawnStartingScale;
-        newHexagonScript.shrinkRate = spawnShrinkRate;
-        newHexagonScript.rotationRate = spawnRotationRate;
+        newHexagonScript.startingScale = scale;
+        newHexagonScript.shrinkRate = shrinkRate;
+        newHexagonScript.rotationRate = rotationRate;
+    }
+
+    void SpawnStartingHexagons()
+    {
+        CreateHexagon(4f, spawnShrinkRate, spawnRotationRate);
+        CreateHexagon(6f, spawnShrinkRate, spawnRotationRate);
+        CreateHexagon(8f, spawnShrinkRate, spawnRotationRate);
     }
 }

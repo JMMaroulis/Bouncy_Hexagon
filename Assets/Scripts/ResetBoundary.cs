@@ -23,7 +23,10 @@ public class ResetBoundary : MonoBehaviour
         {
             //data transfer to next iteration
             float spawnTimePeriod = GameObject.Find("HexagonSpawner").GetComponent<HexagonSpawner>().spawnTimePeriod;
+            float spawnShrinkRate = GameObject.Find("HexagonSpawner").GetComponent<HexagonSpawner>().spawnShrinkRate;
+
             SceneResetDataTransfer.HexagonSpawntimePeriod = (spawnTimePeriod -= 0.1f);
+            SceneResetDataTransfer.HexagonShrinkRate = (spawnShrinkRate += 0.025f);
 
             SceneManager.LoadScene("HexagonScene");
         }
