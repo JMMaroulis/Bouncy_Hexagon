@@ -10,7 +10,6 @@ public class HexagonSpawner : MonoBehaviour
     public float spawnShrinkRate = 0.1f;
     public float spawnStartingScale = 8.0f;
 
-
     public GameObject hexagonPrefab;
 
     //private Hexagon hexagon;

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ResetBoundary : MonoBehaviour
 {
+    private bool levelResetSentinel = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,15 +21,20 @@ public class ResetBoundary : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player" && levelResetSentinel == false)
         {
+            //prevent multiple triggers, should reset on re-instantiation
+            levelResetSentinel = true;
+
             //data transfer to next iteration
             float spawnTimePeriod = GameObject.Find("HexagonSpawner").GetComponent<HexagonSpawner>().spawnTimePeriod;
             float spawnShrinkRate = GameObject.Find("HexagonSpawner").GetComponent<HexagonSpawner>().spawnShrinkRate;
 
             SceneResetDataTransfer.HexagonSpawntimePeriod = (spawnTimePeriod -= 0.1f);
             SceneResetDataTransfer.HexagonShrinkRate = (spawnShrinkRate += 0.025f);
+            SceneResetDataTransfer.currentLevel += 1;
 
+            Debug.Log("Level Change!");
             SceneManager.LoadScene("HexagonScene");
         }
     }

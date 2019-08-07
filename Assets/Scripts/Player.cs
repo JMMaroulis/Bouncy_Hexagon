@@ -132,7 +132,6 @@ public class Player : MonoBehaviour
         Mesh shadowOverlay = new Mesh();
         shadowOverlay.vertices = hitVectorsSorted;
         shadowOverlay.triangles = PolynomialTriangles(hitVectorsSorted.Length);
-        Debug.Log("Got There!");
 
         //material.SetColor("_Color", new Color(0f, 0f, 0f, 0f));
         //material.color = new Color(0f, 0f, 0f, 1f);
