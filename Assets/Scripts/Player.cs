@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     private List<AudioClip> Notes = new List<AudioClip>();
 
     private AudioSource audioSource;
-    private float pointExtender = 1.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -66,18 +65,13 @@ public class Player : MonoBehaviour
 
     void RaycastTestThing()
     {
-        //rotation quaternian for getting past points
-        //Quaternion extraRotation = new Quaternion(0, 0, degreeRotationExtra, 0);
-
         //get all hexagon vertices
-        //LineRenderer[] allHexagons = Object.FindObjectsOfType<LineRenderer>();
         EdgeCollider2D[] allHexagons = Object.FindObjectsOfType<EdgeCollider2D>();
         Vector2[][] allPoints = new Vector2[allHexagons.Length][];
 
         for (int i = 0; i < allHexagons.Length; i++)
         {
             allPoints[i] = new Vector2[6];
-            //allHexagons[i].GetPositions(allPoints[i]);
             allPoints[i] = allHexagons[i].points;
         }
 
@@ -87,7 +81,6 @@ public class Player : MonoBehaviour
         List<Quaternion> deviations = new List<Quaternion>();
         for (float i = -2f; i <= 2f; i+= 0.1f)
         //for (float i = -0.0006f; i <= 0.0006f; i += 0.0006f)
-
         {
                 deviations.Add(Quaternion.AngleAxis(i, new Vector3(0,0,1)));
         }
@@ -130,16 +123,15 @@ public class Player : MonoBehaviour
 
         //construct one biiiiig polygon out of the resulting raycast collision points
         Mesh shadowOverlay = new Mesh();
+        //expand FoV polygon just a little bit
+        for (int i = 0; i < hitVectorsSorted.Length; i++)
+        {
+            hitVectorsSorted[i] = (1.1f * hitVectorsSorted[i]) - (0.1f * transform.position);
+        }
         shadowOverlay.vertices = hitVectorsSorted;
         shadowOverlay.triangles = PolynomialTriangles(hitVectorsSorted.Length);
 
-        //material.SetColor("_Color", new Color(0f, 0f, 0f, 0f));
-        //material.color = new Color(0f, 0f, 0f, 1f);
-        //material.shader = shader;
-
-
         Graphics.DrawMesh(shadowOverlay, Vector3.zero, Quaternion.identity, material, 20);
-        //DrawTestMesh();
 
     }
 
@@ -160,45 +152,5 @@ public class Player : MonoBehaviour
 
         return triangles;
     }
-
-    void DrawTestMesh()
-    {
-        //raycast to 4 corners (this should not be this much fucking work, it really shouldn't)
-        GameObject boundingBox = GameObject.FindGameObjectWithTag("GameBoundary");
-        EdgeCollider2D boundingBoxcollider = boundingBox.GetComponent<EdgeCollider2D>();
-        var bounds = boundingBoxcollider.bounds;
-        Vector2 centre = bounds.center;
-        float width = bounds.size.x;
-        float height = bounds.size.y;
-
-        Vector3 a = new Vector3(centre.x + (0.5f * width), centre.y + (0.5f * height), 0);
-        Vector3 b = new Vector3(centre.x + (0.5f * width), centre.y - (0.5f * height), 0);
-        Vector3 c = new Vector3(centre.x - (0.5f * width), centre.y - (0.5f * height), 0);
-        Vector3 d = new Vector3(centre.x - (0.5f * width), centre.y + (0.5f * height), 0);
-
-        List<RaycastHit2D> hitList = new List<RaycastHit2D>();
-        hitList.Add(Physics2D.Raycast(transform.position, a - transform.position));
-        hitList.Add(Physics2D.Raycast(transform.position, b - transform.position));
-        hitList.Add(Physics2D.Raycast(transform.position, c - transform.position));
-        hitList.Add(Physics2D.Raycast(transform.position, d - transform.position));
-
-        List<RaycastHit2D> hitListSorted = hitList.OrderBy(vector => Vector3.SignedAngle(vector.point - (Vector2)transform.position, new Vector3(0, 1, 0), new Vector3(0, 0, 1))).ToList();
-        Vector3[] hitVectorsSorted = new Vector3[hitListSorted.Count + 1];
-        hitVectorsSorted[0] = transform.position;
-
-        for (int i = 0; i < hitVectorsSorted.Length - 1; i++)
-        {
-            hitVectorsSorted[i + 1] = hitListSorted[i].point;
-        }
-
-        Mesh testMesh = new Mesh();
-        //testMesh.vertices = new Vector3[] { transform.position, a, b, c, d };
-        testMesh.vertices = hitVectorsSorted;
-
-
-        testMesh.triangles = new int[] { 0,1,2, 0,2,3, 0,3,4 };
-        Graphics.DrawMesh(testMesh, Vector3.zero, Quaternion.identity, material, 30);
-    }
-
 
 }

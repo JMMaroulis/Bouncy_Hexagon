@@ -12,12 +12,12 @@ public class HexagonSpawner : MonoBehaviour
 
     public GameObject hexagonPrefab;
 
-    //private Hexagon hexagon;
     private float timer;
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Hexagon Spawner Exists");
         if (SceneResetDataTransfer.HexagonSpawntimePeriod != 0)
         {
             spawnTimePeriod = SceneResetDataTransfer.HexagonSpawntimePeriod;
